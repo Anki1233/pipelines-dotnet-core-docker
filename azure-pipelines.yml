@@ -32,7 +32,9 @@ stages:
           $(tag)
     - script: |
        docker build -f Dockerfile -t $(dockerId)/$(imageName) .
-       docker login -u $(dockerId) -p Docker@123
+       docker login -u $(dockerId) -p $(pswd)
        docker push $(dockerId)/$(imageName)
       displayName: 'Pushing Image'
+      env:
+        pswd: $(dockerPassword)
               
